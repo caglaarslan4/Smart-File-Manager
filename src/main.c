@@ -1,4 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+void createFile();
+void readFile();
+void writerFile();
+void renameFile();
+void deleteFile();
+void searchFile();
+
+
 int main(){
     int n;
     printf("============================\n");
@@ -26,57 +36,42 @@ int main(){
        printf("you selected: %d\n",n);
     }
 
-    switch (n)
-    {
-    case 1:
-      char fileName[100];
-      FILE *fptr ;
-      
-      printf("Create File selected.\n");
-      printf("Enter file name: ");
-      scanf("%99s",fileName);
-      fptr = fopen(fileName, "w");
+   while(1)
+   {
+      scanf("%d",&n);
 
-      if(fptr== NULL)
+      switch (n)
       {
-         printf("File could not be created.\n");
-      }
+         case 1:
+            createFile();
+            break;
 
-      else
-      {
-         printf("File created succesfully.\n");
-         fclose(fptr);
-      }
+         case 2:
+            readFile();
+            break;
 
-      break;
+         case 3:
+            writerFile();
+            break;
 
-   case 2:
-      printf("Read File selected.\n");
-      break;
+         case 4:
+            renameFile();
+            break;
 
-   case 3:
-      printf("Write File selected.\n");
-      break;
+         case 5:
+            deleteFile();
+            break;
 
-   case 4:
-      printf("Rename File selected.\n");
-      break;
+         case 6:
+            searchFile();
+            break;
 
-   case 5:
-      printf("Delete File selected.\n");
-      break;
-
-   case 6:
-      printf("Search File selected.\n");
-      break;
-
-   case 7:
-      printf("Goodbye!\n");
-      break;
+         case 7:
+            return 0;
     
-    default:
-      printf("Wrong choice ! Please select a number between 1 and 7.\n");
-      
-    }
+         default:
+             printf("Wrong choice ! Please select a number between 1 and 7.\n");
+      }  
+   }
     return 0;
 }
