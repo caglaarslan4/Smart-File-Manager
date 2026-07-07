@@ -36,7 +36,7 @@ int main(){
             break;
 
          case 4:
-           
+            renameFile();
             break;
 
          case 5:
@@ -152,4 +152,22 @@ void writerFile()
       printf("Data was written to file successfully.\n");
    }
   fclose(fptr);
+}
+
+void renameFile(){
+   char newName[100];
+   printf("Enter the current file name: ");
+   scanf("%s",fileName);
+
+   printf("Enter the new file name: ");
+   scanf("%s",newName);
+
+   if(rename(fileName, newName) == 0)
+   {
+      printf("File renamed successfully.\n");
+   }
+   else
+   {
+      printf("Error: File could not be renamed.\n");
+   }
 }
