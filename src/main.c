@@ -44,7 +44,7 @@ int main(){
             break;
 
          case 6:
-            
+            searchFile();
             break;
 
          case 7:
@@ -185,4 +185,22 @@ void deleteFile()
    {
       printf("Error: File could not be deleted.\n"); 
    }
+}
+
+void searchFile()
+{
+   printf("Enter file name to search: ");
+   scanf("%s",fileName);
+   fptr= fopen(fileName,"r");
+
+   if(fptr != NULL)
+   {
+      printf("File found succesfully.\n");
+   }
+   else
+   {
+      printf("File not found.\n");
+      fclose(fptr);
+   }
+
 }
