@@ -40,7 +40,7 @@ int main(){
             break;
 
          case 5:
-           
+            deleteFile();
             break;
 
          case 6:
@@ -169,5 +169,20 @@ void renameFile(){
    else
    {
       printf("Error: File could not be renamed.\n");
+   }
+}
+
+void deleteFile()
+{
+   printf("Enter file name to delete: ");
+   scanf("%s",fileName);
+
+   if(remove(fileName) == 0)
+   {
+      printf("File deleted successfully.\n");
+   }
+   else
+   {
+      printf("Error: File could not be deleted.\n"); 
    }
 }
