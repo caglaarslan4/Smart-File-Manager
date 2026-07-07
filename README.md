@@ -10,5 +10,10 @@ A terminal-based file manager written to C.
 -Delete File
 -Search File
 
+## Technologies
+-C
+-GCC
+-Visual Studio Code
+
 ## Author
 Çağla ARSLAN
