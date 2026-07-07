@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+char fileName[100];
+FILE *fptr;
 
 void showMenu();
 void createFile();
@@ -8,7 +12,6 @@ void writerFile();
 void renameFile();
 void deleteFile();
 void searchFile();
-
 
 int main(){
    int n;
@@ -33,15 +36,15 @@ int main(){
             break;
 
          case 4:
-            renameFile();
+           
             break;
 
          case 5:
-            deleteFile();
+           
             break;
 
          case 6:
-            searchFile();
+            
             break;
 
          case 7:
@@ -49,7 +52,8 @@ int main(){
     
          default:
             printf("Wrong choice ! Please select a number between 1 and 7.\n");
-      }  
+      }
+
    }
     return 0;
 }
@@ -57,7 +61,7 @@ int main(){
 void showMenu()
 {
    printf("============================\n");
-   printf("     SMART FİLE MANAGER     \n");
+   printf("     SMART FILE MANAGER     \n");
    printf("============================\n");
    printf("1. Create File\n");
    printf("2. Read File\n");
@@ -72,11 +76,9 @@ void showMenu()
 
 void createFile()
 {
-   char fileName[100];
-   FILE* fptr;
    printf("Create File seleced.\n");
    printf("Enter file name: ");
-   scanf("%99s", fileName);
+   scanf("%99s",fileName);
    fptr= fopen(fileName,"w");
 
    if(fptr==NULL)
@@ -90,4 +92,64 @@ void createFile()
       fclose(fptr);
    }
 
+}
+
+void readFile()
+{  
+   char line[200];
+   printf("Enter the name of the file to be read: ");
+   scanf("%s",fileName);
+   fptr=fopen(fileName,"r");
+   if(fptr==NULL)
+   {
+      printf("Error: File not found or has not been created.\n");
+      return;
+   }
+   else
+   {
+      printf("\n---- File Content ----\n");
+      while(fgets(line,200,fptr))
+      {
+         printf("%s\n",line);
+      }
+      
+   }
+   
+   fclose(fptr);
+
+}
+  
+
+
+void writerFile()
+{ 
+  
+  char data[200];
+  printf("Enter the file name for the text you wish to write:");
+  scanf("%s",fileName);
+  getchar();
+
+  fptr=fopen(fileName,"w");
+
+  if(fptr==NULL)
+   {
+      printf("Error: File not found or has not been created.\n");
+      return;
+   }
+   else
+   {  
+      printf("File open successful.\n");
+      printf("Enter the your sentences (press enter to finish): ");
+      
+      while(1)
+      {
+        fgets(data,sizeof(data),stdin);
+        if(strcmp(data, "\n")==0)
+           break;
+           
+        fprintf(fptr, "%s",data);
+      }
+      printf("Data was written to file successfully.\n");
+   }
+  fclose(fptr);
 }
